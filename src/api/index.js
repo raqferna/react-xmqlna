@@ -60,7 +60,10 @@ export const getVideos = () =>
   new Promise((resolve, reject) => {
     getThumbnail().then((thumbnail) => {
       const character = thumbnail.results;
-      FAKE_DATA.forEach((el, i) => el.thumbnail == character[i].image);
+      FAKE_DATA.forEach((el, i) => {
+        el.thumbnail = character[i].image;
+      });
+      return resolve(FAKE_DATA);
     });
   });
 
